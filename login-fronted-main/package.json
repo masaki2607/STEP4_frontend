@@ -16,8 +16,8 @@
     "typescript": "5.8.3"
   },
   "scripts": {
-    "dev": "npx next dev",
-    "build": "npx next build",
-    "start": "npx next start -p $PORT"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   }
 }

@@ -54,10 +54,3 @@ jobs:
           slot-name: 'Production'
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A32E208CDD454CD0850A193BCBA5C0E3 }}
-      
-      - name: 'Configure startup command'
-        uses: azure/CLI@v1
-        with:
-          azcliversion: 2.30.0
-          inlineScript: |
-            az webapp config set --resource-group DefaultResourceGroup-SGA --name aps-oneview-01 --startup-file "npm start"

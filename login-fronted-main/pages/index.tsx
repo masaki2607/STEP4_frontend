@@ -1,13 +1,16 @@
 // pages/index.tsx
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { GetServerSideProps } from 'next';
 
 export default function Index() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.replace("/login");
-  }, [router]);
-
+  // このコンポーネントは実際にはレンダリングされません（リダイレクトのため）
   return null;
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    redirect: {
+      destination: '/login',
+      permanent: false,
+    },
+  };
+};

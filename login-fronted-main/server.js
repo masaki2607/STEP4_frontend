@@ -1,12 +1,21 @@
 const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
+const path = require('path')
+const fs = require('fs')
 
 const dev = process.env.NODE_ENV !== 'production'
 const hostname = process.env.WEBSITE_HOSTNAME || 'localhost'
 const port = process.env.PORT || 3000
 
-const app = next({ dev, hostname, port })
+// Ensure .next directory exists
+const nextDir = path.join(__dirname, '.next')
+if (!fs.existsSync(nextDir)) {
+  console.log('.next directory not found, creating...')
+  fs.mkdirSync(nextDir, { recursive: true })
+}
+
+const app = next({ dev, hostname, port, dir: __dirname })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
@@ -27,4 +36,7 @@ app.prepare().then(() => {
     .listen(port, () => {
       console.log(`> Ready on http://${hostname}:${port}`)
     })
+}).catch((ex) => {
+  console.error(ex.stack)
+  process.exit(1)
 })

@@ -6,7 +6,7 @@ const fs = require('fs')
 
 const dev = process.env.NODE_ENV !== 'production'
 const hostname = process.env.WEBSITE_HOSTNAME || 'localhost'
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 
 // Ensure .next directory exists
 const nextDir = path.join(__dirname, '.next')

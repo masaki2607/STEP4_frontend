@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Simplified configuration for Azure deployment
+  trailingSlash: true,
+  generateEtags: false,
+  poweredByHeader: false
 }
 
 module.exports = nextConfig

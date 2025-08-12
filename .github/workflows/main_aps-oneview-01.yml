@@ -29,7 +29,12 @@ jobs:
           npm ci
           npm run build
           # Verify build was successful
-          ls -la .next/ || echo ".next directory not found"
+          if [ ! -d ".next" ]; then
+            echo "ERROR: .next directory not found after build"
+            exit 1
+          fi
+          ls -la .next/
+          echo "Build completed successfully"
           
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4

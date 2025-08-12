@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  env: {
-    PORT: process.env.PORT || 8080,
-  },
+  // Simplified configuration for Azure deployment
 }
 
 module.exports = nextConfig

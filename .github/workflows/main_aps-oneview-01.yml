@@ -28,6 +28,8 @@ jobs:
         run: |
           npm ci --production=false
           npm run build
+          # Ensure .next directory is created
+          ls -la .next/
           
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4

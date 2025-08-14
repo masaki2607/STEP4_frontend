@@ -35,7 +35,11 @@ export default function Login() {
       }
 
       const data = await res.json();
-      localStorage.setItem("token", data.access_token);
+      
+      // SSR対応：クライアントサイドでのみlocalStorageを使用
+      if (typeof window !== 'undefined') {
+        localStorage.setItem("token", data.access_token);
+      }
 
       alert("ログイン成功！");
       // リダイレクトはマイページが未定なのでポップアップのみ

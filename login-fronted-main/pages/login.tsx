@@ -46,14 +46,12 @@ export default function Login() {
     }
   };
 
-    return (
+  return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <h1 className="text-2xl font-bold mb-6">GROW Next</h1>
 
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
         <form onSubmit={handleSubmit}>
-
-
           <label className="block mb-2">社員番号</label>
           <input
             type="text"
@@ -84,5 +82,5 @@ export default function Login() {
         </form>
       </div>
     </div>
-  )
+  );
 }

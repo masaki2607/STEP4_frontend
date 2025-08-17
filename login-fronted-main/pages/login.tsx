@@ -37,7 +37,7 @@ export default function Login() {
       const data = await res.json();
       
       // SSR対応：クライアントサイドでのみlocalStorageを使用
-      if (typeof window !== 'undefined') {
+      if (typeof window !== 'undefined' && data?.access_token) {
         localStorage.setItem("token", data.access_token);
       }
 

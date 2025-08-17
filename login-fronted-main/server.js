@@ -4,9 +4,13 @@ const next = require('next')
 const path = require('path')
 const fs = require('fs')
 
-const dev = process.env.NODE_ENV !== 'production'
+// Azure App Serviceでは強制的にproductionモードに設定
+process.env.NODE_ENV = 'production'
+const dev = false // Azure App Serviceでは常にプロダクションモード
 const hostname = process.env.WEBSITE_HOSTNAME || 'localhost'
 const port = process.env.PORT || 8080
+
+console.log(`Starting server in ${process.env.NODE_ENV} mode on ${hostname}:${port}`)
 
 // Ensure .next directory exists
 const nextDir = path.join(__dirname, '.next')

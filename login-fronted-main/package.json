@@ -21,6 +21,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node server.js"
+    "start": "next start",
+    "start:custom": "node server.js"
   }
 }

@@ -1,12 +1,11 @@
 // pages/index.tsx
-import { GetServerSideProps } from 'next';
 
 export default function Index() {
   // このコンポーネントは実際にはレンダリングされません（リダイレクトのため）
   return null;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
   return {
     redirect: {
       destination: '/login',

@@ -2,8 +2,9 @@ const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
 
-// Azure App Service用の環境設定
-const dev = process.env.NODE_ENV !== 'production'
+// Azure App Service用の環境設定 - プロダクションを強制
+process.env.NODE_ENV = 'production'
+const dev = false // Azure App Serviceでは常にプロダクションモード
 const hostname = process.env.WEBSITE_HOSTNAME || '0.0.0.0'
 const port = process.env.PORT || 3000
 

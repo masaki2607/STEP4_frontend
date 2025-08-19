@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   // Azure App Service用の設定
   output: 'standalone',
   // プロダクション最適化

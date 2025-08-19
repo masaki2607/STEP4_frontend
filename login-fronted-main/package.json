@@ -23,8 +23,8 @@
     "build": "next build",
     "postbuild": "echo Build completed successfully",
     "prebuild": "echo Starting build process",
-    "start": "node server.js",
-    "start:next": "next start",
+    "start": "next start",
+    "start:custom": "node server.js",
     "health": "curl -f http://localhost:${PORT:-3000}/health || exit 1"
   }
 }

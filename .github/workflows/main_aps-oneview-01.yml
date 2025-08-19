@@ -34,6 +34,9 @@ jobs:
             exit 1
           fi
           ls -la .next/
+          # Create a deployment package with .next directory
+          echo "Creating deployment package..."
+          tar -czf ../deployment.tar.gz . --exclude=node_modules --exclude=.git
           echo "Build completed successfully"
           
       - name: Upload artifact for deployment job

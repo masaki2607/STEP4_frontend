@@ -16,7 +16,33 @@ const nextConfig = {
   // ハイドレーション問題の解決
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
-  }
+  },
+  // SSRとクライアントの不整合を防ぐ
+  experimental: {
+    esmExternals: false,
+  },
+  // 画像最適化を無効化（Azure App Service環境で問題になる場合がある）
+  images: {
+    unoptimized: true,
+  },
+  // 静的ファイルの配信設定
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+        ],
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

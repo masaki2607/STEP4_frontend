@@ -24,8 +24,8 @@
     "postbuild": "echo Build completed successfully",
     "prebuild": "echo Starting build process",
     "prestart": "npm run build",
-    "start": "next start",
-    "start:custom": "node server.js",
+    "start": "node .next/standalone/server.js",
+    "start:fallback": "next start",
     "health": "curl -f http://localhost:${PORT:-3000}/health || exit 1"
   }
 }

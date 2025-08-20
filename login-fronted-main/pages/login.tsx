@@ -20,7 +20,13 @@ export default function Login() {
     }
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+      if (!apiUrl) {
+        setError("API URLが設定されていません。");
+        return;
+      }
+
+      const res = await fetch(`${apiUrl}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
@@ -36,8 +42,14 @@ export default function Login() {
 
       const data = await res.json();
       
+      // データの妥当性を確認
+      if (!data || typeof data !== 'object') {
+        setError("サーバーから無効なレスポンスを受信しました。");
+        return;
+      }
+      
       // SSR対応：クライアントサイドでのみlocalStorageを使用
-      if (typeof window !== 'undefined' && data?.access_token) {
+      if (typeof window !== 'undefined' && data.access_token) {
         localStorage.setItem("token", data.access_token);
       }
 
@@ -46,6 +58,7 @@ export default function Login() {
       //マイページへの遷移は、書いておりません。
     } catch (error) {
       console.error("ネットワークエラー:", error);
+      const errorMessage = error instanceof Error ? error.message : "不明なエラー";
       setError("サーバーに接続できません。APIサーバーが起動しているか確認してください。");
     }
   };

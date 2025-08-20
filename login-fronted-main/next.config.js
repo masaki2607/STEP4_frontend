@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false, // React Strict Modeを無効化してハイドレーション問題を回避
   // Azure App Service用の設定
   output: 'standalone',
   // プロダクション最適化

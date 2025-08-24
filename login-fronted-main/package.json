@@ -19,13 +19,12 @@
     "typescript": "5.8.3"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "postbuild": "echo Build completed successfully",
-    "prebuild": "echo Starting build process",
-    "prestart": "npm run build",
-    "start": "node .next/standalone/server.js",
-    "start:fallback": "next start",
-    "health": "curl -f http://localhost:${PORT:-3000}/health || exit 1"
+  "dev": "next dev",
+  "build": "next build",
+  "postbuild": "echo Build completed successfully",
+  "prebuild": "echo Starting build process",
+  "start": "node .next/standalone/server.js",
+  "start:fallback": "next start",
+  "health": "curl -f http://localhost:${PORT:-3000}/health || exit 1"
   }
 }
